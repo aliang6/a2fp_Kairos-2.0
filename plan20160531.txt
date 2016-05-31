@@ -1,0 +1,19 @@
+Age of War Simulation
+
+1. Creating character image 
+     We need to represent each of the types of troops using different shapes. 
+2. Moving people across plane 
+
+3. Having visual representation of progress
+
+4. Experience and gold counter
+
+5. Evolution system
+
+6. Upgrades
+
+7. Turret
+
+8. Special ability
+
+9. Enemy AI
