@@ -1,1 +1,2 @@
 June 2, 2016 - Andy Liang created the general outline for the plan. Also started UML Diagram and flowchart.
+June 3, 2016 - Entire group worked on UML Diagram and flowchart. Delegated tasks. Shariar has Character class. Andy has Turrets and Base. Owen has Special.
