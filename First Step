@@ -11,3 +11,75 @@ void draw() {
   andy.draw();
   andy.process();
 }
+
+//Ball.pde
+class Ball {
+
+  final static int MOVING = 0;
+  final static int GROWING = 1;
+  final static int SHRINKING = 2;
+  final static int DEAD = 3;
+
+  final float CHANGE_FACTOR = .25;
+  final float MAX_RADIUS = 50;
+
+  float x;
+  float y;
+  float rad;
+  color c;
+  float dx;
+  float dy;
+  int state;
+
+  Ball() {
+    c = color(100,100,100);
+    float r = random(256);
+
+    rad = 10;
+
+    x = random((width - r) + r/2);
+    y = random((height - r) + r/2);
+
+    dx = random(10) - 5;
+    dy = random(10) - 5;
+
+    state = MOVING;
+  }
+
+
+  void move() {
+    x = x + dx;
+    y = y + dy;
+  }
+
+
+  void process() {
+    if ( rad >= MAX_RADIUS )
+      state = SHRINKING;
+    if ( rad <= 0 ) 
+      state = DEAD;
+    if ( state == MOVING )
+      move();
+    else if ( state == GROWING )
+      grow();
+  }
+
+
+  void draw() { //why was there an int i param?
+    if ( state != DEAD ) {
+      ellipseMode(RADIUS);
+      fill(c);
+      stroke(c);
+      ellipse(x, y, rad, rad);
+    }
+  }
+
+  boolean isTouching( Ball other ) {
+    return sqrt( (x - other.x) * (x - other.x) + (y - other.y) * (y - other.y) ) < rad + other.rad;
+  }
+
+  void grow() 
+  {
+    rad = rad + CHANGE_FACTOR;
+  }
+}
