@@ -1,2 +1,19 @@
 June 2, 2016 - Andy Liang created the general outline for the plan. Also started UML Diagram and flowchart.
 June 3, 2016 - Entire group worked on UML Diagram and flowchart. Delegated tasks. Shariar has Character class. Andy has Turrets and Base. Owen has Special.
+
+-------------------------------------
+Shariar Kabir
+6/9/16
+
+
+9:20 AM- 9:54 AM - Created Ranger, cavalry, Melee class. This has the cost, their health, coordinates, and shapes among other things.
+
+10:00 AM - 10:30 AM - Created Player and Base classes which will be able to determine when the new age starts
+
+2:30 Pm - 5:00 PM - Created special, spawn melee, spawn ranger, spawn cavalry areas on field. Created bases on field. Created adding of the spawns to the battlefield. Done using arraylist, will be updated using stacks class we wrote.
+
+--------------------------------------
+
+
+
+
