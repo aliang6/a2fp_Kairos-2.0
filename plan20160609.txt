@@ -1,0 +1,25 @@
+Age of War Simulation
+
+1. Creating character image and base structure
+     We need to represent each of the types of troops using different shapes. We will need to create a general abstract character file with variables such as shape, attack, health, attack range and functions for dying, attacking, and the attack animation. The base structure will be similar. In addition to variables of the character, it will have variables such as turrets.
+2. Moving people across plane 
+     Moving the people across the plane will probably be a part of the character function. It will be a function that has the character walk in a certain direction until there's an enemy within its attack range. Then it will initiate the attack function
+3. Having visual representation of progress
+     Arraylist of the battlefield.
+4. Experience and gold counter
+     Gold is used for the creation of more characters and turrets, and for upgrades. It is gained by killing enemy characters. Experience is also gained the same way except it doesn't go down. There are experience requirements to evolve into the next age.
+5. Evolution system
+     The player and opponent are able to enter the next age through upgrading once gold and experience requirements are met. This changes the characters they are able to summom, the turret damage, the base health, the special ability, and the upgrades. We will try to have at least 5 ages.
+6. Upgrades
+     The upgrades increase the damage of turrets, increase the amount of turrets on the base structure, the damage of troops, and decreases the cooldown of the special.
+7. Turret
+     The turrets do damage to enemy troops when they enter its attack range. It is immobile and is used as a defensive measure.
+8. Special ability
+     The special ability is unique to each age and helps the player advance his troops in some unique way.
+9. Enemy AI
+     The enemy will respond to certain actions of the players through actions of its own.
+
+
+Need:
+
+spawning new added items onto field. Keeping each character behind us. Attack function. Evolving into new age fxn
