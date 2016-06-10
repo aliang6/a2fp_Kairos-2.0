@@ -18,7 +18,7 @@ class Player {
   }
   
   void display(){
-    ellipse(x,y,20,20);
+    ellipse(x,y,40,20);
   }
   
 }
