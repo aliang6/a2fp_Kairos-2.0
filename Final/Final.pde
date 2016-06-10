@@ -47,7 +47,7 @@ void setup() {
   rangerY = 10;
   rangerW = 40;
   rangerH = 20;
-  
+
   // Enemy Button Coordinates
   meleeEX = 1380;
   cavalryEX = 1310;
@@ -57,7 +57,10 @@ void setup() {
 
 void draw() {
   background(0);
-
+  
+  fill(256, 256, 256);
+  rect(0, 670, 1500, 50);
+  
   myBase.display();
 
   enemyBase.display();
@@ -77,7 +80,7 @@ void draw() {
   rect(rangerX, rangerY, rangerW, rangerH);  // Draw ranger spawn box
   text("Ranger", 140, 10);
   text(rangerList.size(), 140, 70);
-  
+
   rect(cavalryEX, cavalryY, cavalryW, cavalryH);  // Cavalry Box
   text("Cavalry", 1310, 10);
   text(cavalryEList.size(), 1310, 70);
@@ -92,8 +95,8 @@ void draw() {
 
   fill(256, 0, 0);
   textSize(25);
-  text(myBase.getHealth(), 20, 500);
-  text(enemyBase.getHealth(), 1420, 500);
+  text(myBase.health, 20, 500);
+  text(enemyBase.health, 1420, 500);
 
   //--------------------------------------------------------------------------
 
@@ -109,47 +112,51 @@ void draw() {
    rangerList.get(x).draw();
    rangerList.get(x).process();
    } */
-  if(summonsList.size() != 0){
+  if (summonsList.size() != 0) {
     for (int x = 0; x < summonsList.size(); x++) {
       summonsList.get(x).draw();
-      if(enemyList.size() != 0){
+      if (enemyList.size() != 0) {
         if (summonsList.get(x).isTouching(enemyList.get(0)))
-          summonsList.get(x).attack(enemyList.get(0));
+          enemyList.get(0).health -= summonsList.get(x).att;
       }
-      if (summonsList.get(x).isTouching(enemyBase)){
-        summonsList.get(x).attack(enemyBase);
+      if (summonsList.get(x).isTouching(enemyBase)) {
+        enemyBase.health -= summonsList.get(x).att;
+        //long lastTime = millis();
+        //if (millis() - lastTime >= 1000) {
+        //  enemyBase.health -= summonsList.get(x).att;
+        //  lastTime=millis();
       }
-      else{
-        summonsList.get(x).move();  
-      }
-    }
-  }
-  
-  if(enemyList.size() != 0){
-    for (int x = 0; x < enemyList.size(); x++) {
-      enemyList.get(x).draw();
-      if(summonsList.size() != 0){
-        if (enemyList.get(x).isTouching(summonsList.get(0)))
-          enemyList.get(x).attack(summonsList.get(0));
-      }
-      if (enemyList.get(x).isTouching(myBase))
-        enemyList.get(x).attack(myBase);  
-      else{
-        enemyList.get(x).move();  
+        else {
+          summonsList.get(x).move();
       }
     }
   }
 
-      //if (enemyList.size() != 0 &&
-      //  summonsList.get(x).isTouching(enemyList.get(0))) {
-      //  summonsList.get(x).state = Summons.ATTACKING;
-      //  summonsList.get(x).attack(enemyList.get(0));
-      //}
-      //if (summonsList.size() == 0 &&
-      //  summonsList.get(x).isTouching(enemyBase)) {
-      //  summonsList.get(x).state = Summons.ATTACKING;
-      //  summonsList.get(x).attack(enemyBase);
-      //}
+    if (enemyList.size() != 0) {
+      for (int x = 0; x < enemyList.size(); x++) {
+        enemyList.get(x).draw();
+        if (summonsList.size() != 0) {
+          if (enemyList.get(x).isTouching(summonsList.get(0)))
+            enemyList.get(x).attack(summonsList.get(0));
+        }
+        if (enemyList.get(x).isTouching(myBase))
+          myBase.health -= .01;
+        else {
+          enemyList.get(x).move();
+        }
+      }
+    }
+
+    //if (enemyList.size() != 0 &&
+    //  summonsList.get(x).isTouching(enemyList.get(0))) {
+    //  summonsList.get(x).state = Summons.ATTACKING;
+    //  summonsList.get(x).attack(enemyList.get(0));
+    //}
+    //if (summonsList.size() == 0 &&
+    //  summonsList.get(x).isTouching(enemyBase)) {
+    //  summonsList.get(x).state = Summons.ATTACKING;
+    //  summonsList.get(x).attack(enemyBase);
+    //}
   }
 
   boolean overRect(int x, int y, int width, int height) {
@@ -172,7 +179,7 @@ void draw() {
   boolean overRanger() {
     return overRect(rangerX, rangerY, rangerW, rangerH);
   }
-  
+
   boolean overEMelee() {
     return overRect(meleeEX, meleeY, meleeW, meleeH);
   }
@@ -213,34 +220,32 @@ void draw() {
   }
 
   void addMelee(int side) {
-    if (side == 1){
+    if (side == 1) {
       if (myPlayer.coins >10) {
         meleeList.add(new Melee(1));
         summonsList.add(new Melee(1));
         myPlayer.coins-=10;
-        meleeCount+=1;  
+        meleeCount+=1;
       }
-    }
-    else{
+    } else {
       if (enemyPlayer.coins >10) {
         meleeEList.add(new Melee(2));
         enemyList.add(new Melee(2));
         enemyPlayer.coins-=10;
-        meleeECount+=1;  
+        meleeECount+=1;
       }
     }
   }
 
   void addRanger(int side) {
-    if (side == 1){
+    if (side == 1) {
       if (myPlayer.coins >10) {
         rangerList.add(new Ranger(1));
         summonsList.add(new Ranger(1));
         myPlayer.coins-=10;
         rangerCount+=1;
       }
-    }
-    else{
+    } else {
       if (enemyPlayer.coins >10) {
         rangerEList.add(new Ranger(2));
         enemyList.add(new Ranger(2));
@@ -251,15 +256,14 @@ void draw() {
   }
 
   void addCavalry(int side) {
-    if (side == 1){
+    if (side == 1) {
       if (myPlayer.coins >10) {
         cavalryList.add(new Cavalry(1));
         summonsList.add(new Cavalry(1));
         myPlayer.coins-=10;
         cavalryCount+=1;
       }
-    }
-    else{
+    } else {
       if (enemyPlayer.coins >10) {
         cavalryEList.add(new Cavalry(2));
         enemyList.add(new Cavalry(2));

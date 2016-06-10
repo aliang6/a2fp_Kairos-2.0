@@ -17,7 +17,7 @@ class Melee extends Summons {
       dx = -5;
       attRange = 120;
     }
-    rad = 10;
+    att = .01;
     state = MOVING;
   }
 
@@ -33,9 +33,7 @@ class Melee extends Summons {
         other.health -= 30;
         lastTime=millis();
       };
-      //lastTime = millis();
     }
-//  }
   
   //void attack(Summons other) {
   //  if (millis() - lastTime > 1000) {

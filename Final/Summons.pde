@@ -11,9 +11,9 @@ class Summons extends Object {
   int cost;
   int deathGain;
   float attRange;
-  float rad;
   float dx;
   int state;
+  float att;
 
   //void process() {
   //  if ( rad <= 0 ) 
@@ -34,14 +34,9 @@ class Summons extends Object {
   }
 
   boolean isTouching( Object other ) {
-    return(abs((other.getXCor() - x)) < attRange && other.getTeam() != team);
+    return(abs((other.x - x)) <= attRange);
   }
 
   void attack(Object other) {
-  }
-
-
-  void grow() {
-    rad = rad + CHANGE_FACTOR;
   }
 }

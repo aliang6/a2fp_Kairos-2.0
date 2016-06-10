@@ -16,7 +16,6 @@ class Cavalry extends Summons{
       c = color(0,256,0);
       dx = -1;
     }
-    rad = 10;
     state = MOVING;
   }
 
@@ -26,17 +25,17 @@ class Cavalry extends Summons{
     ellipse(x,y,60,40);
   }
   
-  void attack(Base other) {
-    long lastTime = millis();
-    if (millis() - lastTime > 1000) {
-      other.setHealth(other.getHealth() - 30);
-    }
-  }
+  //void attack(Base other) {
+  //  long lastTime = millis();
+  //  if (millis() - lastTime > 1000) {
+  //    other.setHealth(other.getHealth() - 30);
+  //  }
+  //}
   
-  void attack(Summons other) {
-    long lastTime = millis();
-    if (millis() - lastTime > 1000) {
-      other.setHealth(other.getHealth() - 30);
-    }
-  }
+  //void attack(Summons other) {
+  //  long lastTime = millis();
+  //  if (millis() - lastTime > 1000) {
+  //    other.setHealth(other.getHealth() - 30);
+  //  }
+  //}
 }
