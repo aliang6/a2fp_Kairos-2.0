@@ -23,4 +23,16 @@ Andy Liang
 
 11:56 PM - 5:27 AM - Worked on the attack function, game display, numbers that needed to be displayed, summoning monsters, monster and base detection, and monster states.
 
+---------------------------------------
+
+Andy LIang
+6/11/16 - 6/12/16
+
+11:03 PM - 3:11 AM - Fixed summon collision issues, added summon recognition, added summon death.
+
+3:11 AM - 4:04 AM - Gold and experience implemented.
+
+4:04 AM - 4:19 AM - Added Victory and Defeat functions.
+
+4:19 AM - 6:49 AM - Added the upgrade and evolution system. Added some more indicators on the screen.
 
