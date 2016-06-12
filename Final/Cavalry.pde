@@ -1,22 +1,26 @@
 class Cavalry extends Summons{
   
-  Cavalry(int side){
+  Cavalry(int side, int upgrade, int evolution){
     if (side == 1){
     x = 101;
     y = 650;
     team = 1;
-    c = color(256,0,0);
-    dx = 1;
-    health = 200;
+    c = color(256 , 0 + (upgrade * 10), 0 + (evolution * 50));
+    dx = 5;
     }
     else{
       x = 1399;
       y = 650;
       team = 2;
-      c = color(0,256,0);
-      dx = -1;
+      c = color(0 + (upgrade * 10), 256, 0 + (evolution * 50));
+      dx = -5;
     }
-    state = MOVING;
+    attRange = 32;
+    health = (200 + (int)(5 * evolution * (upgrade - 1))) + (int)(1.5 * 200 * (evolution - 1));
+    att = (.05 + (int)(.0015 * evolution * (upgrade - 1))) + (25 * .05 * (evolution - 1));
+    deathGain = (50 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.2 * 50 * (evolution - 1));
+    cost = (25 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.1 * 25 *(evolution - 1));
+    xpGain = (5 + (int)(1 * evolution * (upgrade - 1))) + (int)(1.2 * 5 * (evolution - 1));
   }
 
     void draw(){

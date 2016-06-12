@@ -1,20 +1,14 @@
 class Player {
-  int coins;
+  int gold;
   boolean haveSpec;
   float x;
   float y;
   int xp;
   
-  
-  
-  
   Player(){
-    coins=100;
+    gold=200;
     haveSpec=true;
     xp=0;
-  
-  
-  
   }
   
   void display(){
@@ -22,6 +16,3 @@ class Player {
   }
   
 }
-  
-  
-  

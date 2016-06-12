@@ -1,20 +1,14 @@
 class Summons extends Object {
-  //States
-  final static int MOVING = 0;
-  final static int GROWING = 1;
-  final static int ATTACKING = 2;
-  final static int DEAD = 3;
-  final float CHANGE_FACTOR = .25;
-  final float MAX_RADIUS = 50;
 
   //Instance Variables
-  int cost;
   int deathGain;
   float attRange;
   float dx;
   int state;
   float att;
-
+  int cost;
+  int xpGain;
+  
   //void process() {
   //  if ( rad <= 0 ) 
   //    state = DEAD;
@@ -36,7 +30,8 @@ class Summons extends Object {
   boolean isTouching( Object other ) {
     return(abs((other.x - x)) <= attRange);
   }
-
-  void attack(Object other) {
+  
+  boolean isTouching( Object other, int addRange ) {
+    return(abs(((other.x + addRange) - x)) <= attRange);
   }
 }

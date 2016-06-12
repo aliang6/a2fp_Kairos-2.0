@@ -1,24 +1,25 @@
 class Melee extends Summons {
   
-  Melee(int side) {
+  Melee(int side, int upgrade, int evolution) {
     if (side == 1) {
       x = 101;
       y = 650;
       team = 1;
-      c = color(256, 0, 0);
+      c = color(256 , 0 + (upgrade * 10), 0 + (evolution * 50));
       dx = 5;
-      health = 50;
-      attRange = 20;
     } else {
       x = 1399;
       y = 650;
       team = 2;
-      c = color(0, 256, 0);
+      c = color(0 + (upgrade * 10), 256, 0 + (evolution * 50));
       dx = -5;
-      attRange = 120;
     }
-    att = .01;
-    state = MOVING;
+    attRange = 20;
+    health = (50 + (int)(5 * evolution * (upgrade - 1))) + (int)(1.5 * 50 * (evolution - 1));
+    att = (.01 + (int)(.0015 * evolution * (upgrade - 1))) + (25 * .01 * (evolution - 1));
+    deathGain = (20 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.2 * 20 * (evolution - 1));
+    cost = (10 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.1 * 10 *(evolution - 1));
+    xpGain = (2 + (int)(1 * evolution * (upgrade - 1))) + (int)(1.2 * 2 * (evolution - 1));
   }
 
   void draw() {
@@ -26,19 +27,4 @@ class Melee extends Summons {
     stroke(c);
     ellipse(x, y, 30, 30);
   }
-
-  void attack(Base other) {
-      long lastTime = millis();
-      while(millis() - lastTime >= 1000){
-        other.health -= 30;
-        lastTime=millis();
-      };
-    }
-  
-  //void attack(Summons other) {
-  //  if (millis() - lastTime > 1000) {
-  //    other.setHealth(other.getHealth() - 30);
-  //    lastTime = millis();
-  //  }
-  //}
 }
