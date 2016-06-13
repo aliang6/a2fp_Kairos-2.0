@@ -112,13 +112,13 @@ void turrentAttack(){
   
   for (int i = 0 ; i < projectileList.size() ; i++){
     projectileList.get(i).display(); 
-    int enitem = enemyList.size()-1;
+    int enitem = enemyList.size();
     for (int y = 0 ; y < enitem;y++){
-      if (projectileList.size()>1){
+      if (projectileList.size() > 0){
       if ((projectileList.get(i)).isTouching(enemyList.get(y))){
       projectileList.remove(i);
-      (enemyList.get(y)).health=(enemyList.get(y)).health-10;
-      enitem= enemyList.size()-1;
+      (enemyList.get(y)).health=(enemyList.get(y)).health-turretDamage;
+      enitem = enemyList.size();
     }       
       }         
     }   
