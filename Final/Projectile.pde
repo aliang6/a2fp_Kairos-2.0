@@ -5,15 +5,17 @@ class Projectile{
   int finalx,finaly;
   Boolean used=false;
   int attRange = 5;
+  Summons enemy;
   
   
   
-  Projectile(int finalxx, int finalyy) {
+  Projectile(Summons ene) {
     damage = 25;
     x = 50;
     y = 250;
-    finalx=finalxx;
-    finaly=finalyy;
+    enemy=ene;
+    finalx=(int)enemy.x;
+    finaly=(int)enemy.y;
     c = color (206, 206, 206);
     ID = (int)(Math.random()*9999999)+"";
   
@@ -32,20 +34,24 @@ class Projectile{
   }
   
     boolean isTouching( Object other ) {
-    return(abs((other.x - x)) <= attRange);
+    return (abs((other.x - x)) <= attRange) && (abs((other.y - y)) <= attRange);
   }
   
   
   
    void move(){
-        if (y+3 >= finaly){
-        y=finaly;
-        x+=3;
-        }
-        else{
-          y+=3;
-          x+=3;
-        }
+         finalx=(int)enemy.x;
+         finaly=(int)enemy.y;
+         x+=3;
+         y+=1;
+         
+         if (x>=finalx){
+           x=finalx;
+           y+=3;
+         
+         }
+        
+        
         
       
       }

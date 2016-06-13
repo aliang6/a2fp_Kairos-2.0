@@ -11,13 +11,14 @@ class Turrent {
      
      Turrent(){
        cost = 100;
-       ammo = 10;
+       ammo = 5;
        x=50;
        y=250;
        power = x;
        c = color (206, 206, 206);
-     
        }
+       
+       
        
     void display() {
       
