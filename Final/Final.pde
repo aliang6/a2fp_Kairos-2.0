@@ -136,7 +136,7 @@ void draw() {
   myTurrent.display();
   if ((myTurrent.ammo>0 || projectileList.size()>0) && enemyList.size() >0 ){
     if (myTurrent.ammo>0){
-      projectileList.add(new Projectile( (int)(enemyList.get((int)(Math.random()*enemyList.size()))).x, (int)(enemyList.get((int)(Math.random()*enemyList.size()))).y));
+      projectileList.add(new Projectile( enemyList.get(0)));
       myTurrent.ammo-=1;    
     }
     
