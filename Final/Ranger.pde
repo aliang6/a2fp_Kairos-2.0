@@ -17,7 +17,7 @@ class Ranger extends Summons{
       c = color(0 + (upgrade * 10), 256, 0 + (evolution * 50));
       dx = -5;
     }
-    attRange = 100 * evolution;
+    attRange = 150;
     health = (40 + (int)(5 * evolution * (upgrade - 1))) + (int)(1.5 * 40 * (evolution - 1));
     att = (.005 + (int)(.0015 * evolution * (upgrade - 1))) + (25 * .005 * (evolution - 1));
     deathGain = (20 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.2 * 20 * (evolution - 1));
