@@ -104,16 +104,10 @@ void turrentAttack(){
       projectileList.remove(i);
       (enemyList.get(y)).health=(enemyList.get(y)).health-10;
       enitem= enemyList.size()-1;
-    } 
-      
-      }
-         
-    }
-    
+    }       
+      }         
+    }   
   }
-    
-
-
 }
 
 
@@ -126,16 +120,8 @@ void draw() {
 
   enemyBase.display();
   myTurrent.display();
-  if ((myTurrent.ammo>0 || projectileList.size()>0) && enemyList.size() >0 ){
-    if (myTurrent.ammo>0){
-      projectileList.add(new Projectile( enemyList.get(0)));
-      myTurrent.ammo-=1;    
-    }
-    
-    if (projectileList.size()>0){
+  if (projectileList.size()>0){
     turrentAttack();
-    }
-    
   }
   
   if (overRect(0, 0, 50, 50)==true && mousePressed==true) {
@@ -341,6 +327,11 @@ boolean overERanger() {
   return overRect(rangerEX, rangerY, rangerW, rangerH);
 }
 
+boolean overTurret() {
+  return overRect(50, 250, 50, 50);
+}
+
+
 //------------------------------------------------------------------------
 
 void mouseClicked() {
@@ -365,6 +356,18 @@ void mouseClicked() {
 
   if (overECavalry()==true) {
     addCavalry(2);
+  }
+  if (overTurret()==true){
+    if ((myTurrent.ammo>0 || projectileList.size()==1) && enemyList.size() >0 ){
+    if (myTurrent.ammo>0){
+      projectileList.add(new Projectile( enemyList.get(0)));
+      myTurrent.ammo-=1;    
+    }
+    
+
+    
+  }
+  
   }
   
   if (overRect(210, 10, 40, 20) && myPlayer.gold >= (cavalryCost)){
