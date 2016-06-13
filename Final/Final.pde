@@ -140,9 +140,9 @@ void draw() {
       myTurrent.ammo-=1;    
     }
     
-    //if (projectileList.size()>0){
-    //turrentAttack();
-    //}
+    if (projectileList.size()>0){
+    turrentAttack();
+    }
     
   }
   
@@ -401,29 +401,29 @@ void mouseClicked() {
   if (overRect(0, 70, 40, 20) && myPlayer.gold >= (cavalryUpCost)){
     myPlayer.gold -= cavalryUpCost;
     cavalryUpCost *= 1.25;
-    cavalryCost = (cavalryCost + (int)(2 * evolution * (cavalryUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
+    cavalryCost = (25 + (int)(2 * evolution * (cavalryUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
     cavalryUpgrade += 1;
   }
   
   if (overRect(100, 70, 40, 20) && myPlayer.gold >= (meleeUpCost)){
     myPlayer.gold -= meleeUpCost;
     meleeUpCost *= 1.25;
-    meleeCost = (meleeCost + (int)(2 * evolution * (meleeUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
+    meleeCost = (10 + (int)(2 * evolution * (meleeUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
     meleeUpgrade += 1;
   }
   
   if (overRect(200, 70, 40, 20) && myPlayer.gold >= (rangerUpCost)){
     myPlayer.gold -= rangerUpCost;
     rangerUpCost *= 1.25;
-    rangerCost = (rangerCost + (int)(2 * evolution * (rangerUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
+    rangerCost = (10 + (int)(2 * evolution * (rangerUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
     rangerUpgrade += 1;
   }
   
   if (overRect(300, 70, 40, 20) && myPlayer.gold >= (baseUpCost)){
-    myPlayer.gold -= rangerUpCost;
-    rangerUpCost *= 1.25;
-    rangerCost = (rangerCost + (int)(2 * evolution * (rangerUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
-    rangerUpgrade += 1;
+    myPlayer.gold -= baseUpCost;
+    myBase.health += 50;
+    baseUpCost *= 1.25;
+    baseUpgrade += 1;
   }
   
   if (overRect(400, 70, 40, 20) && myPlayer.gold >= (turretUpCost)){
@@ -432,42 +432,57 @@ void mouseClicked() {
     turretUpgrade += 1;
   }
   
-  if (overRect(500, 70, 40, 20) && myPlayer.gold >= (evolution)){
-    myPlayer.gold -= evolution;
-    cavalryCost = (cavalryCost + (int)(2 * evolution * (cavalryUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
-    rangerCost = (rangerCost + (int)(2 * evolution * (rangerUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
-    meleeCost = (meleeCost + (int)(2 * evolution * (meleeUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
+  if (overRect(500, 70, 40, 20) && myPlayer.gold >= (evolutionCost)){
+    myPlayer.gold -= evolutionCost;
+    myBase.health += 250;
+    cavalryCost = (25 + (int)(2 * evolution * (cavalryUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    rangerCost = (10 + (int)(2 * evolution * (rangerUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
+    meleeCost = (10 + (int)(2 * evolution * (meleeUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
+    evolutionCost *= (1 + evolution * evolution);
     evolution += 1;
   }
   
-  if (overRect(900, 10, 40, 20) && enemyPlayer.gold >= (cavalryEUpCost)){
-    enemyPlayer.gold -= cavalryECost;
+  if (overRect(940, 70, 40, 20) && enemyPlayer.gold >= (cavalryEUpCost)){
+    enemyPlayer.gold -= cavalryEUpCost;
     cavalryEUpCost *= 1.25;
-    cavalryECost = (cavalryECost + (int)(2 * evolutionE * (cavalryEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    cavalryECost = (25 + (int)(2 * evolutionE * (cavalryEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
     cavalryEUpgrade += 1;
   }
   
-  if (overRect(1000, 10, 40, 20) && enemyPlayer.gold >= (meleeEUpCost)){
+  if (overRect(1040, 70, 40, 20) && enemyPlayer.gold >= (meleeEUpCost)){
     enemyPlayer.gold -= meleeEUpCost;
     meleeEUpCost *= 1.25;
-    meleeECost = (meleeECost + (int)(2 * evolutionE * (meleeEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    meleeECost = (10 + (int)(2 * evolutionE * (meleeEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
     meleeEUpgrade += 1;
   }
   
-  if (overRect(1100, 10, 40, 20) && enemyPlayer.gold >= (rangerEUpCost)){
+  if (overRect(1140, 70, 40, 20) && enemyPlayer.gold >= (rangerEUpCost)){
     enemyPlayer.gold -= rangerEUpCost;
     rangerEUpCost *= 1.25;
-    rangerECost = (rangerECost + (int)(2 * evolutionE * (rangerEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    rangerECost = (10 + (int)(2 * evolutionE * (rangerEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
     rangerEUpgrade += 1;
   }
   
+  if (overRect(1240, 70, 40, 20) && myPlayer.gold >= (baseEUpCost)){
+    enemyPlayer.gold -= baseEUpCost;
+    enemyBase.health += 50;
+    baseEUpCost *= 1.25;
+    baseEUpgrade += 1;
+  }
   
+  if (overRect(1340, 70, 40, 20) && myPlayer.gold >= (turretEUpCost)){
+    myPlayer.gold -= turretEUpCost;
+    turretEUpCost *= 1.25;
+    turretEUpgrade += 1;
+  }
   
-  if (overRect(1200, 10, 40, 20) && enemyPlayer.gold >= (evolutionE)){
-    enemyPlayer.gold -= evolutionE;
-    rangerECost = (rangerECost + (int)(2 * evolutionE * (rangerEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
-    meleeECost = (meleeECost + (int)(2 * evolutionE * (meleeEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
-    cavalryECost = (cavalryECost + (int)(2 * evolutionE * (cavalryEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+  if (overRect(1440, 70, 40, 20) && enemyPlayer.gold >= (evolutionECost)){
+    enemyPlayer.gold -= evolutionECost;
+    enemyBase.health += 250;
+    rangerECost = (10 + (int)(2 * evolutionE * (rangerEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    meleeECost = (10 + (int)(2 * evolutionE * (meleeEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    cavalryECost = (25 + (int)(2 * evolutionE * (cavalryEUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
+    evolutionECost *= (evolutionE * evolutionE + 1);
     evolutionE += 1;
   }
   
@@ -477,17 +492,17 @@ void mouseClicked() {
 
 void addMelee(int side) {
   if (side == 1) {
-    if (myPlayer.gold >new Melee(1, meleeUpgrade, evolution).cost) {
+    if (myPlayer.gold > meleeCost) {
       meleeList.add(new Melee(1, meleeUpgrade, evolution));
       summonsList.add(new Melee(1, meleeUpgrade, evolution));
-      myPlayer.gold-=new Melee(1, meleeUpgrade, evolution).cost;
+      myPlayer.gold-= meleeCost;
       meleeCount+=1;
     }
   } else {
-    if (enemyPlayer.gold >new Melee(2, meleeEUpgrade, evolution).cost) {
-      meleeEList.add(new Melee(2, meleeEUpgrade, evolution));
-      enemyList.add(new Melee(2, meleeEUpgrade, evolution));
-      enemyPlayer.gold-=new Melee(2, meleeEUpgrade, evolution).cost;
+    if (enemyPlayer.gold > meleeECost) {
+      meleeEList.add(new Melee(2, meleeEUpgrade, evolutionE));
+      enemyList.add(new Melee(2, meleeEUpgrade, evolutionE));
+      enemyPlayer.gold-= meleeECost;
       meleeECount+=1;
     }
   }
@@ -495,17 +510,17 @@ void addMelee(int side) {
 
 void addRanger(int side) {
   if (side == 1) {
-    if (myPlayer.gold >new Ranger(1, rangerUpgrade,evolution).cost) {
-      rangerList.add(new Ranger(1, rangerUpgrade,evolution));
-      summonsList.add(new Ranger(1, rangerUpgrade,evolution));
-      myPlayer.gold-=new Ranger(1, rangerUpgrade,evolution).cost;
+    if (myPlayer.gold > rangerCost) {
+      rangerList.add(new Ranger(1, rangerUpgrade, evolution));
+      summonsList.add(new Ranger(1, rangerUpgrade, evolution));
+      myPlayer.gold-= rangerCost;
       rangerCount+=1;
     }
   } else {
-    if (enemyPlayer.gold >new Ranger(2, rangerEUpgrade,evolution).cost) {
-      rangerEList.add(new Ranger(2, rangerEUpgrade,evolution));
-      enemyList.add(new Ranger(2, rangerEUpgrade,evolution));
-      enemyPlayer.gold-=new Ranger(2, rangerEUpgrade,evolution).cost;
+    if (enemyPlayer.gold > rangerECost) {
+      rangerEList.add(new Ranger(2, rangerEUpgrade,evolutionE));
+      enemyList.add(new Ranger(2, rangerEUpgrade,evolutionE));
+      enemyPlayer.gold-= rangerECost;
       rangerECount+=1;
     }
   }
@@ -513,17 +528,17 @@ void addRanger(int side) {
 
 void addCavalry(int side) {
   if (side == 1) {
-    if (myPlayer.gold > new Cavalry(1, cavalryUpgrade,evolution).cost) {
-      cavalryList.add(new Cavalry(1, cavalryUpgrade,evolution));
-      summonsList.add(new Cavalry(1, cavalryUpgrade,evolution));
-      myPlayer.gold -= new Cavalry(1, cavalryUpgrade,evolution).cost;
+    if (myPlayer.gold > cavalryCost) {
+      cavalryList.add(new Cavalry(1, cavalryUpgrade, evolution));
+      summonsList.add(new Cavalry(1, cavalryUpgrade, evolution));
+      myPlayer.gold -= cavalryCost;
       cavalryCount+=1;
     }
   } else {
-    if (enemyPlayer.gold >new Cavalry(2, cavalryEUpgrade, evolution).cost) {
-      cavalryEList.add(new Cavalry(2, cavalryEUpgrade, evolution));
-      enemyList.add(new Cavalry(2, cavalryEUpgrade, evolution));
-      enemyPlayer.gold -=new Cavalry(2, cavalryEUpgrade, evolution).cost;
+    if (enemyPlayer.gold > cavalryECost) {
+      cavalryEList.add(new Cavalry(2, cavalryEUpgrade, evolutionE));
+      enemyList.add(new Cavalry(2, cavalryEUpgrade, evolutionE));
+      enemyPlayer.gold -= cavalryECost;
       cavalryECount+=1;
     }
   }

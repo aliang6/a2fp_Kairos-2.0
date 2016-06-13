@@ -6,7 +6,7 @@ class Player {
   int xp;
   
   Player(){
-    gold=200;
+    gold=2000;
     haveSpec=true;
     xp=0;
   }

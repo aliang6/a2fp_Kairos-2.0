@@ -6,7 +6,7 @@ class Melee extends Summons {
       y = 650;
       team = 1;
       c = color(256 , 0 + (upgrade * 10), 0 + (evolution * 50));
-      dx = 1;
+      dx = 5;
     } else {
       x = 1399;
       y = 650;
