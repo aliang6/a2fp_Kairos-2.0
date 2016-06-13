@@ -25,7 +25,7 @@ Andy Liang
 
 ---------------------------------------
 
-Andy LIang
+Andy Liang
 6/11/16 - 6/12/16
 
 11:03 PM - 3:11 AM - Fixed summon collision issues, added summon recognition, added summon death.
@@ -36,9 +36,7 @@ Andy LIang
 
 4:19 AM - 6:49 AM - Added the upgrade and evolution system. Added some more indicators on the screen.
 
-
-
--------------------------------------------------------------
+-----------------------------------------
 
 Shariar Kabir
 
@@ -46,5 +44,13 @@ Shariar Kabir
 
 Issues left to complete: Incorporating correct projectile motion into projectiles.
 
+-------------------------------------------
 
+6/12/16 - 6/13/16
+
+11:00 PM - 3:45 AM - Entire group refined code and worked on game balance
+
+3:45 AM - Pushed final code.
+
+-------------------------------------------------------------
 
