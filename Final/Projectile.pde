@@ -1,4 +1,5 @@
 class Projectile{
+   PImage img;
   int damage,x,y;
   int c;
   String ID;
@@ -18,14 +19,15 @@ class Projectile{
     finaly=(int)enemy.y;
     c = color (206, 206, 206);
     ID = (int)(Math.random()*9999999)+"";
-  
+      img = loadImage("missle.png");
+
   
   
   }
   
   void display() {
     fill(c);
-    ellipse(x, y, 10, 10);
+    image(img,x, y, 10, 10);
     move();
   
   

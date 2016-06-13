@@ -1,5 +1,6 @@
 class Turrent {
-  
+     PImage img;
+
      int cost;
      int ammo;
      int cooldown;
@@ -10,6 +11,8 @@ class Turrent {
      int finalx,finaly;
      
      Turrent(){
+           img = loadImage("turret.png");
+
        cost = 100;
        ammo = 5;
        x=50;
@@ -23,7 +26,7 @@ class Turrent {
     void display() {
       
     fill(c);
-    rect(x, y, 50, 50);
+    image(img,x, y, 50, 50);
     
       }
 
