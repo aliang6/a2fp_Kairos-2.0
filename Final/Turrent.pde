@@ -14,7 +14,6 @@ class Turrent {
            img = loadImage("turret.png");
 
        cost = 100;
-       ammo = 5;
        x=50;
        y=250;
        power = x;

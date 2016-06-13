@@ -12,13 +12,14 @@ ArrayList<Ranger> rangerEList = new ArrayList<Ranger>();
 ArrayList<Summons> enemyList = new ArrayList<Summons>();
 int meleeECount, rangerECount, cavalryECount;
 Turrent myTurrent;
-  PImage img;
+PImage img;
 
 
 Base myBase;
 Base enemyBase;
 Player myPlayer;
 Player enemyPlayer;
+int turretCost, turretDamage;
 int meleeX, meleeY, meleeW, meleeH;
 int cavalryX, cavalryY, cavalryW, cavalryH;
 int rangerX, rangerY, rangerW, rangerH;
@@ -42,6 +43,8 @@ void setup() {
   enemyBase= new Base(2);
   myPlayer = new Player();
   enemyPlayer=new Player();
+  turretCost = 5;
+  turretDamage = 10;
   meleeCount=0;
   rangerCount=0;
   cavalryCount=0;
@@ -393,16 +396,12 @@ void mouseClicked() {
     addCavalry(2);
   }
   if (overTurret()==true){
-    if ((myTurrent.ammo>0 || projectileList.size()==1) && enemyList.size() >0 ){
-    if (myTurrent.ammo>0){
-      projectileList.add(new Projectile( enemyList.get(0)));
-      myTurrent.ammo-=1;    
+    if ((myPlayer.xp > turretCost || projectileList.size()==1) && enemyList.size() >0 ){
+    if (myPlayer.xp > turretCost){
+      projectileList.add(new Projectile( enemyList.get(0), turretDamage));
+      myPlayer.xp -= turretCost;    
     }
-    
-
-    
   }
-  
   }
   
   if (overRect(0, 70, 40, 20) && myPlayer.gold >= (cavalryUpCost)){
@@ -435,6 +434,8 @@ void mouseClicked() {
   
   if (overRect(400, 70, 40, 20) && myPlayer.gold >= (turretUpCost)){
     myPlayer.gold -= turretUpCost;
+    turretCost = turretCost + (5 * turretUpgrade);
+    turretDamage = turretDamage + (2 * turretUpgrade);
     turretUpCost *= 1.25;
     turretUpgrade += 1;
   }
@@ -442,6 +443,8 @@ void mouseClicked() {
   if (overRect(500, 70, 40, 20) && myPlayer.gold >= (evolutionCost)){
     myPlayer.gold -= evolutionCost;
     myBase.health += 250;
+    turretCost *= 2;
+    turretDamage *= 2;
     cavalryCost = (25 + (int)(2 * evolution * (cavalryUpgrade  - 1))) + (int)(1.1 * 10 *(evolutionE - 1));
     rangerCost = (10 + (int)(2 * evolution * (rangerUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));
     meleeCost = (10 + (int)(2 * evolution * (meleeUpgrade  - 1))) + (int)(1.1 * 10 *(evolution - 1));

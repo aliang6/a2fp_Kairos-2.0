@@ -10,8 +10,8 @@ class Projectile{
   
   
   
-  Projectile(Summons ene) {
-    damage = 25;
+  Projectile(Summons ene, int dmg) {
+    damage = dmg;
     x = 50;
     y = 250;
     enemy=ene;
@@ -20,9 +20,6 @@ class Projectile{
     c = color (206, 206, 206);
     ID = (int)(Math.random()*9999999)+"";
       img = loadImage("missle.png");
-
-  
-  
   }
   
   void display() {

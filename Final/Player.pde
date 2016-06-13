@@ -8,7 +8,7 @@ class Player {
   Player(){
     gold=2000;
     haveSpec=true;
-    xp=0;
+    xp=5000;
   }
   
   void display(){

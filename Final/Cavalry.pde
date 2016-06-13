@@ -18,7 +18,7 @@ class Cavalry extends Summons{
       dx = -5;
     }
     attRange = 32;
-    health = (200 + (int)(5 * evolution * (upgrade - 1))) + (int)(1.5 * 200 * (evolution - 1));
+    health = (100 + (int)(5 * evolution * (upgrade - 1))) + (int)(1.5 * 200 * (evolution - 1));
     att = (.05 + (int)(.0015 * evolution * (upgrade - 1))) + (25 * .05 * (evolution - 1));
     deathGain = (50 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.2 * 50 * (evolution - 1));
     cost = (25 + (int)(2 * evolution * (upgrade - 1))) + (int)(1.1 * 25 *(evolution - 1));
