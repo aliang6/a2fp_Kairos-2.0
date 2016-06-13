@@ -1,6 +1,7 @@
 class Melee extends Summons {
-  
+  PImage img;
   Melee(int side, int upgrade, int evolution) {
+    img = loadImage("ninja.png");
     if (side == 1) {
       x = 101;
       y = 650;
@@ -25,6 +26,6 @@ class Melee extends Summons {
   void draw() {
     fill(c);
     stroke(c);
-    ellipse(x, y, 30, 30);
+    image(img, x, y, 30, 30);
   }
 }

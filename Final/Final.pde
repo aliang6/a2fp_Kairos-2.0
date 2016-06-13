@@ -12,6 +12,8 @@ ArrayList<Ranger> rangerEList = new ArrayList<Ranger>();
 ArrayList<Summons> enemyList = new ArrayList<Summons>();
 int meleeECount, rangerECount, cavalryECount;
 Turrent myTurrent;
+  PImage img;
+
 
 Base myBase;
 Base enemyBase;
@@ -31,6 +33,8 @@ int meleeUpCost, rangerUpCost, cavalryUpCost;
 int meleeEUpCost, rangerEUpCost, cavalryEUpCost;
 
 void setup() {
+
+  img = loadImage("background.png");
   size(1500, 700);
   smooth();
   myTurrent = new Turrent();
@@ -112,7 +116,7 @@ void turrentAttack(){
 
 
 void draw() {
-  background(0);
+background(img);
   fill(256, 256, 256);
   rect(0, 670, 1500, 50);
 
