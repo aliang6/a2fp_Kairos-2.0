@@ -3,6 +3,7 @@ ArrayList<Melee> meleeList = new ArrayList<Melee>();
 ArrayList<Cavalry> cavalryList = new ArrayList<Cavalry>();
 ArrayList<Ranger> rangerList = new ArrayList<Ranger>();
 ArrayList<Summons> summonsList = new ArrayList<Summons>();
+ArrayList<Projectile> projectileList = new ArrayList<Projectile>();
 int meleeCount, rangerCount, cavalryCount;
 //=================Enemy============================
 ArrayList<Melee> meleeEList = new ArrayList<Melee>();
@@ -10,6 +11,7 @@ ArrayList<Cavalry> cavalryEList = new ArrayList<Cavalry>();
 ArrayList<Ranger> rangerEList = new ArrayList<Ranger>();
 ArrayList<Summons> enemyList = new ArrayList<Summons>();
 int meleeECount, rangerECount, cavalryECount;
+Turrent myTurrent;
 
 Base myBase;
 Base enemyBase;
@@ -31,6 +33,7 @@ int meleeEUpCost, rangerEUpCost, cavalryEUpCost;
 void setup() {
   size(1500, 700);
   smooth();
+  myTurrent = new Turrent();
   myBase = new Base(1);
   enemyBase= new Base(2);
   myPlayer = new Player();
@@ -43,7 +46,7 @@ void setup() {
   meleeY = 10;
   meleeW = 40;
   meleeH = 20;
-
+  
   cavalryX = 0;
   cavalryY = 10;
   cavalryW = 40;
@@ -89,16 +92,46 @@ void setup() {
 }
 
 
+void turrentAttack(){
+  
+  
+  for (int i = 0 ; i < projectileList.size() ; i++){
+    projectileList.get(i).display(); 
+    for (int y = 0 ; y < enemyList.size();y++){
+      if ((projectileList.get(y)).isTouching(enemyList.get(y))){
+      projectileList.remove(i);
+      (enemyList.get(y)).health=(enemyList.get(y)).health-10;
+    }    
+    }
+    
+  }
+    
+
+
+}
+
+
 void draw() {
   background(0);
-
   fill(256, 256, 256);
   rect(0, 670, 1500, 50);
 
   myBase.display();
 
   enemyBase.display();
-
+  myTurrent.display();
+  if ((myTurrent.ammo>0 || projectileList.size()>0) && enemyList.size() >0 ){
+    if (myTurrent.ammo>0){
+      projectileList.add(new Projectile( (int)(enemyList.get((int)(Math.random()*enemyList.size()))).x, (int)(enemyList.get((int)(Math.random()*enemyList.size()))).y));
+      myTurrent.ammo-=1;    
+    }
+    
+    if (projectileList.size()>0){
+    turrentAttack();
+    }
+    
+  }
+  
   if (overRect(0, 0, 50, 50)==true && mousePressed==true) {
   }
   //-------------------------Draw Spawn Box-----------------------------
@@ -131,7 +164,7 @@ void draw() {
   text("Player Gold:", 0, 150);
   text(myPlayer.gold, 90, 150);
 
-  text("Player Experience:", 0, 175);
+  text("Player XP", 0, 175);
   text(myPlayer.xp, 120, 175);
 
   text("Enemy Gold:", 0, 200);
@@ -199,6 +232,8 @@ void draw() {
   text(meleeEUpCost, 1320, 25);
   text(rangerEUpCost, 1390, 25);
   text(evolutionECost, 1460, 25);
+  //TURRENT==========================================================================================
+  //TURRENT==========================================================================================
 
   //==========================Victory Check===================================
   if (enemyBase.health == 0) {
@@ -206,6 +241,7 @@ void draw() {
     textSize(50);
     text("Congratulations, you have won the war", 320, 200);
   }
+ 
   
   else if (myBase.health == 0) {
     fill(256, 256, 256);

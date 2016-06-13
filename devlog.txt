@@ -36,3 +36,15 @@ Andy LIang
 
 4:19 AM - 6:49 AM - Added the upgrade and evolution system. Added some more indicators on the screen.
 
+
+
+-------------------------------------------------------------
+
+Shariar Kabir
+
+6:00 PM - 8 :00 PM - Worked on Turrent class. Created fucntionality for projectiles. Created method of damage calculations for projectile. 
+
+Issues left to complete: Incorporating correct projectile motion into projectiles.
+
+
+
