@@ -1,6 +1,8 @@
 class Ranger extends Summons{
-  
+    PImage img;
+
   Ranger(int side, int upgrade, int evolution){
+    img = loadImage("archer.png");
     if (side == 1){
     x = 101;
     y = 650;
@@ -26,6 +28,6 @@ class Ranger extends Summons{
     void draw(){
     fill(c);
     stroke(c);
-    ellipse(x,y,20,40);
+    image(img,x,y,20,40);
   }
 }

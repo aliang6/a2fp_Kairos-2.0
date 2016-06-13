@@ -12,6 +12,8 @@ ArrayList<Ranger> rangerEList = new ArrayList<Ranger>();
 ArrayList<Summons> enemyList = new ArrayList<Summons>();
 int meleeECount, rangerECount, cavalryECount;
 Turrent myTurrent;
+  PImage img;
+
 
 Base myBase;
 Base enemyBase;
@@ -31,6 +33,8 @@ int meleeUpCost, rangerUpCost, cavalryUpCost, baseUpCost, turretUpCost;
 int meleeEUpCost, rangerEUpCost, cavalryEUpCost, baseEUpCost, turretEUpCost;
 
 void setup() {
+
+  img = loadImage("background.png");
   size(1500, 700);
   smooth();
   myTurrent = new Turrent();
@@ -112,21 +116,15 @@ void turrentAttack(){
       projectileList.remove(i);
       (enemyList.get(y)).health=(enemyList.get(y)).health-10;
       enitem= enemyList.size()-1;
-    } 
-      
-      }
-         
-    }
-    
+    }       
+      }         
+    }   
   }
-    
-
-
 }
 
 
 void draw() {
-  background(0);
+background(img);
   fill(256, 256, 256);
   rect(0, 670, 1500, 50);
 
@@ -134,16 +132,8 @@ void draw() {
 
   enemyBase.display();
   myTurrent.display();
-  if ((myTurrent.ammo>0 || projectileList.size()>0) && enemyList.size() >0 ){
-    if (myTurrent.ammo>0){
-      projectileList.add(new Projectile( enemyList.get(0)));
-      myTurrent.ammo-=1;    
-    }
-    
-    if (projectileList.size()>0){
+  if (projectileList.size()>0){
     turrentAttack();
-    }
-    
   }
   
   if (overRect(0, 0, 50, 50)==true && mousePressed==true) {
@@ -372,6 +362,11 @@ boolean overERanger() {
   return overRect(rangerEX, rangerY, rangerW, rangerH);
 }
 
+boolean overTurret() {
+  return overRect(50, 250, 50, 50);
+}
+
+
 //------------------------------------------------------------------------
 
 void mouseClicked() {
@@ -396,6 +391,18 @@ void mouseClicked() {
 
   if (overECavalry()==true) {
     addCavalry(2);
+  }
+  if (overTurret()==true){
+    if ((myTurrent.ammo>0 || projectileList.size()==1) && enemyList.size() >0 ){
+    if (myTurrent.ammo>0){
+      projectileList.add(new Projectile( enemyList.get(0)));
+      myTurrent.ammo-=1;    
+    }
+    
+
+    
+  }
+  
   }
   
   if (overRect(0, 70, 40, 20) && myPlayer.gold >= (cavalryUpCost)){

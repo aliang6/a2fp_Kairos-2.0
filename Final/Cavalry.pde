@@ -1,6 +1,8 @@
 class Cavalry extends Summons{
-  
+    PImage img;
+
   Cavalry(int side, int upgrade, int evolution){
+    img = loadImage("horse.png");
     if (side == 1){
     x = 101;
     y = 650;
@@ -26,7 +28,7 @@ class Cavalry extends Summons{
     void draw(){
     fill(c);
     stroke(c);
-    ellipse(x,y,60,40);
+    image(img,x,y,60,40);
   }
   
   //void attack(Base other) {
