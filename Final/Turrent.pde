@@ -25,14 +25,6 @@ class Turrent {
     rect(x, y, 50, 50);
     
       }
-      
-    
-
-
-
-
-
-
 
 
 }
